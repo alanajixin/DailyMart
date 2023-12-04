@@ -1,0 +1,52 @@
+{% extends 'admins.html' %}
+{% block content %}
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                    <h1>CONTACT TABLE</h1>
+                  <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>email</th>
+                    <th>phone</th>
+                    <th>Subject</th>
+                    <th>Message</th>
+                  </tr>
+                  </thead>
+                  {%  for i in data %}
+                  <tbody>
+                    <tr>
+                      <td>{{i.Name}}</td>
+                      
+                      <td>{{i.email}}</td>
+                      
+                      <td>{{i.phone}}</td>
+                      <td>{{i.Subject}}</td>
+                      <td>{{i.Message}}</td>
+                      
+                    </tr>                 
+              
+                  </tbody>
+                  {% endfor %}
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>     
+            
+              <!-- /.card-header -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      
+      <!-- /.content -->
+</div>
+{% endblock %}

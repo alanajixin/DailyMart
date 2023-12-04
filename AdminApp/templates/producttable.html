@@ -1,0 +1,58 @@
+
+{% extends 'admins.html' %}
+{% block content %}
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                    <h1>CATEGORY TABLE</h1>
+                  <thead>
+                  <tr>
+                    <th>productname</th>
+                    <th>productimage</th>
+                    <th>productcategory</th>
+                    <th>productprice</th>
+                  </tr>
+                  </thead>
+                  {%  for i in data %}
+                  <tbody>
+                    <tr>
+                      <td>{{i.productname}}</td>
+                      <td> <img src="{{i.productimage.url}}" style="height: 80px; width:80px"></td>
+                      <td>{{i.productcategory}}</td>
+                      <td>{{i.productprice}}</td>
+                      
+                      <td>
+                        <a href="{% url 'edit1' id=i.id %}">
+                        <button class="btn-primary">edit</button></a>
+                    </td>
+                    <td>
+                        <a href="{% url 'delete1' id=i.id %}">
+                        <button class="btn-primary">delete</button></a>
+                    </td>
+                      
+                    </tr>                 
+              
+                  </tbody>
+                  {% endfor %}
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>     
+            
+              <!-- /.card-header -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      
+      <!-- /.content -->
+</div>
+{% endblock %}

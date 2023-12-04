@@ -1,0 +1,60 @@
+{% extends 'admins.html' %}
+{% block content %}
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                    <h1>DELIVERED TABLE</h1>
+                  <thead>
+                  <tr>
+                    <th> </th>
+                    <th>Name</th>
+                    
+                    <th>PRODUCT NAME</th>
+                    <th>PRODUCT PRICE</th>
+                    <th>PRODUCT QUANTITY</th>
+                    <th>TOTAL</th>
+                    <th>PRODUCT IMAGE</th>
+                    
+
+                    
+                  </tr>
+                  </thead>
+                  {%  for i in data %}
+                  <tbody>
+                    <tr>
+                    <td>{{forloop.counter}}</td>
+                      <td>{{i.userid.Name}}</td>
+                      
+                      <td>{{i.cartid.productid.productname}}</td>
+                      
+                      <td>{{i.cartid.productid.productprice}}</td>
+                      <td>{{i.cartid.quantity}}</td>
+                      <td>{{i.cartid.total}}</td>
+                      <td><img src="{{i.cartid.productid.productimage.url}}" style="height: 80px; width:80px"></td>
+                      
+                    </tr>                 
+              
+                  </tbody>
+                  {% endfor %}
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>     
+            
+              <!-- /.card-header -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      
+      <!-- /.content -->
+</div>
+{% endblock %}

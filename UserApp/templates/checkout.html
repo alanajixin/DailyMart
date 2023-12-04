@@ -1,0 +1,149 @@
+{% extends 'users.html' %}
+{% block content %}
+<img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/1377D/production/_104514797_0769e7e8-6e13-49ad-8a77-8f1cbd10c300.jpg" style="width: 100%;">
+<h1 class="carousel-caption" style="font-size: 60px;">CheckOut</h1>
+<br><br><br><br>
+<section class="checkout spad">
+    <div class="container">
+        <div class="checkout__form">
+            <form action="{% url 'checkoutdata1' %}" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-lg-8 ">
+                        
+                        <h3 class="checkout__title">Billing Details</h3>
+                        <div class="row">
+                            
+                            <div class="col-md-6 form-group p_star ">
+                                <input type="text" class="form-control" id="first" name="firstname" placeholder="First Name" required>
+                                <span class="placeholder" placeholder="First name"></span>
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                <input type="text" class="form-control" id="last" name="lastname" placeholder="Last Name">
+                                <span class="placeholder" data-placeholder="Last name"></span>
+                            </div>
+    
+                            
+                            <div class="col-md-6 form-group ">
+                                <input type="text" class="form-control" id="number" name="phone" placeholder="Phone number" required>
+                                
+                            </div>
+                            <div class="col-md-6 form-group ">
+                                <input type="text" class="form-control" id="email" name="email" placeholder="email" required>
+                                <span class="placeholder" data-placeholder="Email Address"></span>
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                <input type="text" class="form-control" id="country" name="country" placeholder="country">
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                <input type="text" class="form-control" id="add1" name="address" placeholder="address">
+                                <span class="placeholder" data-placeholder="Address line 01"></span>
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                <input type="text" class="form-control" id="city" name="city" placeholder="city">
+                                <span class="placeholder" data-placeholder="Town/City"></span>
+                            </div>
+                            <div class="col-md-12 form-group p_star">
+                                <input type="text" class="form-control" id="city" name="district" placeholder="district">
+                            </div>
+                            
+                            <div class="col-md-12 form-group p_star">
+                                <input type="text" class="form-control" id="state" name="state" placeholder="state">
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode/ZIP">
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group mt-4">
+                                    <div class="radio">
+                                        <label class="mr-3"><input type="radio" name="optradio"> Create an Account? </label>
+                                        <label><input type="radio" name="optradio"> Ship to different address</label>
+                                    </div>
+                                </div>
+            </div>
+        
+
+    
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                       
+                        
+                        
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="checkout__order">
+                            <h2>Your order</h2>
+                            
+                            <table>
+                                <tr>
+                                    <th style="border: 1px solid #dddddd;
+                                    text-align: left;
+                                    padding: 8px;">Product Name</th>
+                                    <th style="border: 1px solid #dddddd;
+                                    text-align: left;
+                                    padding: 8px;">Product quantity</th>
+                                    <th style="border: 1px solid #dddddd;
+                                    text-align: left;
+                                    padding: 8px;">Total price</th>
+                                </tr>
+                                {% for i in data %}
+                                <tr>
+                                    <td style="border: 1px solid #dddddd;
+                                    text-align: left;
+                                    padding: 8px;">{{i.productid.productname}}</td>
+                                    <td style="border: 1px solid #dddddd;
+                                    text-align: left;
+                                    padding: 8px;">{{i.quantity}}</td>
+                                    <td style="border: 1px solid #dddddd;
+                                    text-align: left;
+                                    padding: 8px;">${{i.total}}</td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                            <br><br>
+                            <h5><b>SubTotal:  </b>   <u> ${{s.total__sum}}</u></h5>
+                           
+                            <br><br>
+                            <h2>Payment Methods</h2>
+                            <div class="radion_btn">
+                                <input type="radio" id="f-option5" name="selector">
+                                <label for="f-option5">Direct Bank Transfer</label>
+                                <div class="check"></div>
+                            </div>
+                            <div class="radion_btn">
+                                <input type="radio" id="f-option5" name="selector">
+                                <label for="f-option5">Cheque payment</label>
+                                <div class="check"></div>
+                            </div>
+                            <div class="radion_btn">
+                                <input type="radio" id="f-option5" name="selector">
+                                <label for="f-option5">Paypal</label>
+                                <div class="check"></div>
+                            </div>
+                            <div class="radion_btn">
+                                <input type="radio" id="f-option5" name="selector">
+                                <label for="f-option5">Credit Card</label>
+                                <div class="check"></div>
+                            </div>
+                            <div class="radion_btn">
+                                <input type="radio" id="f-option5" name="selector">
+                                <label for="f-option5">Google pay</label>
+                                <div class="check"></div>
+                            </div>
+
+                            
+                            
+                            <button type="submit" class="btn-primary">PLACE ORDER</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

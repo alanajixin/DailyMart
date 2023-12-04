@@ -1,0 +1,42 @@
+{% extends 'users.html' %}
+{% block content %}
+<section>
+    <h1 style="text-align: center;"><u>Replay Messages</u></h1>
+    <br><br>
+    <div>
+    <table style="margin-left: 230px;">
+        <tr>
+            
+            
+            <th style="border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;">Product Name</th>
+            <th style="border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;">Your Complaint</th>
+            <th style="border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;">Replay</th>
+            
+        </tr>
+        {% for i in data1 %}
+        <tr>
+            
+             
+             <td style="border: 1px solid #dddddd;
+             text-align: left;
+             padding: 8px;">{{i.complaintid.compid.cartid.productid.productname}}</td>
+             <td style="border: 1px solid #dddddd;
+             text-align: left;
+             padding: 8px;">{{i.complaintid.issue}}</td>
+             <td style="border: 1px solid #dddddd;
+             text-align: left;
+             padding: 8px;">{{i.message}}</td>
+             
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends 'users.html' %}
+{% block content %}
+
+<img src="https://images.pexels.com/photos/5632346/pexels-photo-5632346.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" style="width: 100%; height:50%">
+<h1 class="carousel-caption" style="font-size: 60px;">Shopping Cart</h1>
+<br><br><br>
+<section class="cart_area">
+    <div class="container">
+        
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            
+                            <th scope="col">Product Image</th>
+                            <th class="col">Product name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                            
+                            <th scope="col"> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {% for i in data %}
+                            
+                            <td class="image-prod">
+                                <img src="{{i.productid.productimage.url}}" style="height:90px;width:90px;">
+                            </td>
+                            <td class="productname">
+                                <h3>{{i.productid.productname}}</h3>
+                                
+                                <input type="hidden" value="{{i.id}}">
+                            </td>
+                            <td>
+                                <h3>{{i.productid.productprice}}</h3>
+                            </td>
+                            <td>
+                                
+                             <h3>{{i.quantity}}</h3>
+                            </td>
+                            <td>
+                            <h3>{{i.total}}</h3>
+                            
+                            </td>
+                            
+                            <td >
+                                <a href="{% url 'removecart' id=i.id %}">
+                                    <div class="glyphicon glyphicon-remove-circle"></div>
+
+                                </a>
+                            </td>
+                        </tr>
+                        
+                    
+                    {% endfor %}
+                    <tr class="bottom_button">
+                        <td>
+                            <a href="{% url 'products' %}" >
+                                <button class="btn btn-warning" style="font-size: 15px;  " >Continue Shopping </button>
+                            </a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="cupon_text float-right">
+                                <a href="" >
+                                    <button class="btn btn-info" style="font-size: 15px;  " >Update Cart </button>
+                                </a>
+                            </div>
+                          </td>
+                    </tr>
+                    
+                </tbody>
+                </table>
+                
+                
+            </div>
+            
+        </div>
+        <br><br><br>
+        <h4 style="text-align: center;">Subtotal:  ${{s.total__sum}}</h4>
+        <br><br>
+        <a href="{% url 'checkout' %}" >
+            <button class="btn btn-success" style="font-size: 15px; margin:auto; display: grid; " >Checkout </button>
+        </a>
+    
+    </div>
+    </div>
+
+    
+</section>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'admins.html' %}
+{% block content %}
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                    <h1>COMPLAINT TABLE</h1>
+                  <thead>
+                  <tr>
+                    <th> </th>
+                    <th>Name</th>
+                    <th>email</th>
+                    <th>phone</th>
+                    <th>Product Name</th>
+                    <th>Complaint</th>
+                    <th>Replay</th>
+                  </tr>
+                  </thead>
+                  {%  for i in data %}
+                  <tbody>
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                      <td>{{i.userid.Name}}</td>
+                      
+                      <td>{{i.userid.email}}</td>
+                      
+                      <td>{{i.userid.phone}}</td>
+                      <td>{{i.compid.cartid.productid.productname}}</td>
+                      <td>{{i.issue}}</td>
+                      <td><a href="{% url 'replay' id=i.id %}">
+                        <button type="button" class="fa fa-mail-reply btn btn-success">Replay</button>
+                      </a>
+                    </td>
+                    </tr>                 
+              
+                  </tbody>
+                  {% endfor %}
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>     
+            
+              <!-- /.card-header -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      
+      <!-- /.content -->
+</div>
+{% endblock %}

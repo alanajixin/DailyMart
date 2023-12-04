@@ -1,0 +1,112 @@
+{% extends 'users.html' %}
+{% block content %}
+<img src="https://images.pexels.com/photos/9180894/pexels-photo-9180894.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" style="width:100%; height:80%">
+
+
+<br><br><br><br>
+
+<section class="mb-4">
+
+    <!--Section heading-->
+    <h2 class="h1-responsive font-weight-bold text-center my-4" style="font-size:50px; ">Complaint Form</h2>
+    <!--Section description-->
+    <h5 class="text-center w-responsive mx-auto mb-5">Do you have any issues with our product?  Please fill this Form.
+               We will take steps for your issues</h5>
+
+    <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-9 mb-md-0 mb-5">
+            {% for i in data %}
+            
+            
+            <form id="contact-form"  action="{% url 'discomplaint' id=i.id %}" method="POST">
+                {% csrf_token %}
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-lg-8">
+                        <div class="md-form mb-0">
+                            <label for="name" class="">Name</label>
+                            <input type="text" id="name" name="name" class="form-control" value="{{i.userid.Name}}">
+                            
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+                <div class="row">
+
+    
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <label for="email" class=""> Email</label>
+                            <input type="text" id="email" name="email" class="form-control" value="{{i.userid.email}}">
+                           
+                        </div>
+                    </div>
+                    <!--Grid column-->
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            <label for="phone" class="" > Phone number</label>
+                            <input type="text" id="phone" name="phone" class="form-control" value="{{i.userid.phone}}">
+                            
+                        </div>
+                    </div>
+
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            <label for="subject" class="">ProductName</label>
+                            <input type="text" id="subject" name="subject" class="form-control"  value="{{i.cartid.productid.productname}}">
+                            
+                        </div>
+                    </div>
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-12">
+
+                        <div class="md-form">
+                            <label for="message">Complaints</label>
+                            <textarea type="text" id="message" name="issues" rows="2" class="form-control md-textarea"></textarea>
+                            
+                        </div>
+
+                    </div>
+                </div>
+                <!--Grid row-->
+                <div class="text-center text-md-left">
+                    <button class="btn btn-primary" type="submit" >send</button>
+                </div>
+                <div class="status"></div>
+            </div>
+                
+            </form>
+           
+            {% endfor %}
+        <!--Grid column-->
+
+        <!--Grid column-->
+        
+        <!--Grid column-->
+
+    </div>
+
+</section>
+<!--Section: Contact v.2-->
+{% endblock %}

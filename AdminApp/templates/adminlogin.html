@@ -1,0 +1,35 @@
+{% extends 'admins.html' %}
+{% block content %}
+<div class="full_container">
+    <div class="container">
+       <div class="center verticle_center full_height">
+          <div class="login_section">
+             <div class="logo_login">
+                <div class="center">
+                   <img width="260" src="https://images.pexels.com/photos/2882566/pexels-photo-2882566.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="#" />
+                </div>
+             </div>
+             <div class="login_form">
+                <form method="post" action="">
+                  {% csrf_token %}
+                   <fieldset>
+                      <div class="field">
+                         <label class="label_field">Username</label>
+                         <input type="text" name="username" placeholder="username" />
+                      </div>
+                      <div class="field">
+                         <label class="label_field">Password</label>
+                         <input type="password" name="password" placeholder="Password" />
+                      </div>
+                    
+                      
+                         <button type="submit" class=" bg-warning">login</button>
+                      </div>
+                   </fieldset>
+                </form>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+{% endblock %}

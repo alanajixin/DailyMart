@@ -1,0 +1,55 @@
+{% extends 'admins.html' %}
+{% block content %}
+<div class="content-wrapper">
+    <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- left column -->
+            <div class="col-lg-6">
+              <!-- general form elements -->
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Edit Products</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                {% for i in data %}
+                <form action="{% url 'update1' id=i.id %}" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="card-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Product Name</label>
+                      <input type="text" class="form-control" id="product name" name="productname" value="{{i.productname}}">
+                    </div>
+                    <div class="form-group">
+                      <label for="productcategory">Choose category of item:</label>
+                      
+                      <select id="productcategory" name="productcategory" value="{{i.productcategory}}">
+                        {% for i in data1 %}
+                        <option value="{{i.categoryname}}">{{i.categoryname}}</option>
+                        {% endfor %}
+                      </select>
+                      
+                    </div> 
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">product price</label>
+                        <input type="number" class="form-control" id="product price"  name="productprice" value="{{i.productprice}}">
+                      </div>
+                      <div class="form-group">
+                        <label class="form-label" for="form3Example3c">Product image</label>
+                        <input type="file" id="form3Example3c" class="form-control" name="productimage" value="{{i.productimage}}" />
+                        
+                      </div>
+                    
+                        
+                  <!-- /.card-body -->
+    
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+                {% endfor %}
+              </div>
+    </div>
+    </div>
+{% endblock %}
